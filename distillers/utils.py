@@ -169,8 +169,10 @@ def kd_loss(logits_student, logits_teacher, temperature=1.):
 def is_cnn_model(distiller):
     if hasattr(distiller, 'module'):
         _, sizes = distiller.module.stage_info(1)
+        print(distiller.module.stage_info(1))
     else:
         _, sizes = distiller.stage_info(1)
+        print(print(distiller.stage_info(1)))
     if len(sizes) == 3:  # C H W
         return True
     elif len(sizes) == 2:  # L D
