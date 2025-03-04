@@ -111,22 +111,12 @@ class OFA(BaseDistiller):
             logits_teacher = self.teacher(image)
 
         logits_student, feat_student = self.student(image, requires_feat=True)
-        print("Logits student: ")
-        print(logits_student)
-        print("\n")
 
         num_classes = logits_student.size(-1)
-        print("num_classes: ")
-        print(num_classes)
-        print("\n")
         if len(label.shape) != 1:  # label smoothing
             target_mask = F.one_hot(label.argmax(-1), num_classes)
         else:
             target_mask = F.one_hot(label, num_classes)
-
-        print("target_mask: ")
-        print(target_mask)
-        print("\n")
 
         ofa_losses = []
         for stage, eps in zip(self.args.ofa_stage, self.args.ofa_eps):

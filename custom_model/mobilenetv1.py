@@ -7,7 +7,7 @@ __all__ = ['MobileNetV1', 'mobilenetv1']
 
 
 class MobileNetV1(nn.Module):
-    def __init__(self, num_classes=100):
+    def __init__(self, num_classes=1000):
         super(MobileNetV1, self).__init__()
 
         def conv_bn(inp, oup, stride):
@@ -58,7 +58,7 @@ class MobileNetV1(nn.Module):
 
 
 @register_model
-def mobilenetv1(pretrained=False, **kwargs):
-    model = MobileNetV1()
+def mobilenetv1(pretrained=False, num_classes=1000, **kwargs):
+    model = MobileNetV1(num_classes)
     model.default_cfg = {'architecture': 'mobilenetv1'}
     return model
