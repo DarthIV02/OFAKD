@@ -7,7 +7,7 @@ __all__ = ['MobileNetV1', 'mobilenetv1']
 
 
 class MobileNetV1(nn.Module):
-    def __init__(self, num_classes=1000):
+    def __init__(self, num_classes=100):
         super(MobileNetV1, self).__init__()
 
         def conv_bn(inp, oup, stride):
